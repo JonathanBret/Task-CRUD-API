@@ -10,6 +10,26 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Task {
+  id  Int @id @unique
+  title String
+  description String
+  state State
+  priority Priority
+}
+
+enum  State {
+  toDo
+  inProgress
+  done
+}
+
+enum  Priority {
+  moderate
+  high
+  urgent
 }
