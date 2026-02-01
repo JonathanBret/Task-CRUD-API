@@ -5,9 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
+
 
 datasource db {
   provider = "sqlite"
@@ -15,11 +15,11 @@ datasource db {
 }
 
 model Task {
-  id  Int @id @unique
-  title String
+  id          Int      @id @default(autoincrement())
+  title       String
   description String
-  state State
-  priority Priority
+  state       State
+  priority    Priority
 }
 
 enum  State {
